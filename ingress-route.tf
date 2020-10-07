@@ -1,8 +1,8 @@
 resource "k8s_manifest" "ingress_route" {
-  content = yamlencode(local.dashboard_ingress_route)
+  content = yamlencode(local.ingress_route)
 }
 locals {
-  dashboard_ingress_route = {
+  ingress_route = {
     apiVersion = "traefik.containo.us/v1alpha1"
     kind = "IngressRoute"
     metadata = {

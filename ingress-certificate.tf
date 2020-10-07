@@ -1,4 +1,4 @@
-resource "k8s_manifest" "ingress_route" {
+resource "k8s_manifest" "ingress_certificate" {
   content = yamlencode(local.ingress_certificate)
 }
 locals {
