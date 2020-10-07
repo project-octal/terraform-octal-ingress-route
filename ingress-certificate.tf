@@ -8,9 +8,9 @@ locals {
     metadata = {
       name = "${var.name}.traefik-tls"
       namespace = var.namespace
-      labels = merge({
-        "app.kubernetes.io/managed-by" = "Terraform"
-      }, var.labels)
+      #labels = merge({
+      #  "app.kubernetes.io/managed-by" = "Terraform"
+      #}, var.labels)
     }
     spec = {
       commonName = var.dns_name
