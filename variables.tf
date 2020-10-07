@@ -25,7 +25,6 @@ variable "entrypoints" {
 variable "route_rules" {
   type = list(object({
     match_rule: string,
-    rule_service_name: string
     services: list(object({
       name: string,
       namespace: string,
