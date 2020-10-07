@@ -4,7 +4,7 @@ resource "k8s_manifest" "ingress_certificate" {
 locals {
   ingress_certificate = {
     apiVersion = "cert-manager.io/v1alpha2"
-    kind = Certificate
+    kind = "Certificate"
     metadata = {
       name = "${var.name}.traefik-tls"
       namespace = var.namespace
@@ -20,7 +20,7 @@ locals {
       ]
       issuerRef = {
         name = var.cert_issuer
-        kind = ClusterIssuer
+        kind = "ClusterIssuer"
       }
     }
   }
