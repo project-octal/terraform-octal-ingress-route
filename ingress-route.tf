@@ -24,7 +24,7 @@ locals {
           name = service["name"]
           namespace = service["namespace"]
           port = service["port"]
-          scheme = "https"
+          scheme = service["scheme"]
         }
         ]
       }
