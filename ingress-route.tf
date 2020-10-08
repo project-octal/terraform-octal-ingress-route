@@ -8,9 +8,7 @@ locals {
     metadata = {
       name = var.name
       namespace = var.namespace
-      labels = merge({
-        "app.kubernetes.io/managed-by" = "Terraform"
-      }, var.labels)
+      labels = var.labels
     }
     spec = {
       entryPoints = var.entrypoints
