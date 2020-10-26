@@ -16,6 +16,7 @@ locals {
       {
         kind = "Rule"
         match = route["match_rule"]
+        middlewares = route["middlewares"]
         services = [ for service in route["services"] :
         {
           kind = "Service"
