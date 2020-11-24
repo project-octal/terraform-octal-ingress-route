@@ -4,32 +4,32 @@ resource "k8s_manifest" "ingress_route" {
 locals {
   ingress_route = {
     apiVersion = "traefik.containo.us/v1alpha1"
-    kind = "IngressRoute"
+    kind       = "IngressRoute"
     metadata = {
-      name = var.name
+      name      = var.name
       namespace = var.namespace
-      labels = var.labels
+      labels    = var.labels
     }
     spec = {
       entryPoints = var.entrypoints
-      routes = [ for route in var.route_rules :
-      {
-        kind = "Rule"
-        match = route["match_rule"]
-        middlewares = route["middlewares"]
-        services = [ for service in route["services"] :
+      routes = [for route in var.route_rules :
         {
-          kind = "Service"
-          name = service["name"]
-          namespace = service["namespace"]
-          port = service["port"]
-          scheme = service["scheme"]
+          kind        = "Rule"
+          match       = route["match_rule"]
+          middlewares = route["middlewares"]
+          services = [for service in route["services"] :
+            {
+              kind      = "Service"
+              name      = service["name"]
+              namespace = service["namespace"]
+              port      = service["port"]
+              scheme    = service["scheme"]
+            }
+          ]
         }
-        ]
-      }
       ]
       tls = {
-        secretName: local.ingress_certificate.metadata.name
+        secretName : local.ingress_certificate.metadata.name
       }
     }
   }

@@ -4,11 +4,11 @@ resource "k8s_manifest" "ingress_certificate" {
 locals {
   ingress_certificate = {
     apiVersion = "cert-manager.io/v1"
-    kind = "Certificate"
+    kind       = "Certificate"
     metadata = {
-      name = "${var.name}.traefik-tls"
+      name      = "${var.name}.traefik-tls"
       namespace = var.namespace
-      labels = local.labels
+      labels    = local.labels
     }
     spec = {
       commonName = var.dns_name
